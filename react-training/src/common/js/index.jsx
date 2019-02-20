@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Component from './components/component';
 
 ReactDOM.render(
-    <h1>Olá React</h1>, document.querySelector('#app')
+    <Component />, document.querySelector('#app')
 );

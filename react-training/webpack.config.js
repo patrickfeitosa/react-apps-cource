@@ -11,6 +11,9 @@ module.exports = {
         port: 8080,
         contentBase: path.join(__dirname, './dist'),
     },
+    resolve: {
+        extensions: ['', '.js', '.jsx'],
+    },
     module: {
         loaders: [{
             test: /.jsx?$/,
