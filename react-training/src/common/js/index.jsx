@@ -22,6 +22,6 @@ ReactDOM.render(
             <Member name='Rafael'/>
             <Member name='Manuela'/>
         </Family> */}
-        <ClassComponent value='Componente em Class' />
+        <ClassComponent label='Contador' initialValue={10} />
     </div>, document.querySelector('#app')
 );
