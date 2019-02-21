@@ -9,7 +9,9 @@ import ReactDOM from 'react-dom';
 // import Family from './components/family';
 // import Member from './components/member';
 
-import ClassComponent from './components/classComponent';
+// import ClassComponent from './components/classComponent';
+
+import Field from './components/field';
 
 ReactDOM.render(
     <div>
@@ -22,6 +24,7 @@ ReactDOM.render(
             <Member name='Rafael'/>
             <Member name='Manuela'/>
         </Family> */}
-        <ClassComponent label='Contador' initialValue={10} />
+        {/* <ClassComponent label='Contador' initialValue={10} /> */}
+        <Field initialValue='Teste' />
     </div>, document.querySelector('#app')
 );
