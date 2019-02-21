@@ -15,8 +15,10 @@ ReactDOM.render(
         <First />
         <Second />
         <SilvaFamily />
-        <Family familyName='Silva'>
-            <Member name='Guilherme' lastName='Silva'/>
+        <Family lastName='Silva'>
+            <Member name='Guilherme'/>
+            <Member name='Rafael'/>
+            <Member name='Manuela'/>
         </Family>
     </div>, document.querySelector('#app')
 );
