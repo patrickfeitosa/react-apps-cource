@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Component from './components/singleComponent';
-import { First, Second } from './components/multipleComponents';
+// import Component from './components/singleComponent';
+// import { First, Second } from './components/multipleComponents';
 
-import SilvaFamily from './components/silvaFamily';
+// import SilvaFamily from './components/silvaFamily';
 
-import Family from './components/family';
-import Member from './components/member';
+// import Family from './components/family';
+// import Member from './components/member';
+
+import ClassComponent from './components/classComponent';
 
 ReactDOM.render(
     <div>
-        <Component value='Show!' />
+        {/* <Component value='Show!' />
         <First />
         <Second />
         <SilvaFamily />
@@ -19,6 +21,7 @@ ReactDOM.render(
             <Member name='Guilherme'/>
             <Member name='Rafael'/>
             <Member name='Manuela'/>
-        </Family>
+        </Family> */}
+        <ClassComponent value='Componente em Class' />
     </div>, document.querySelector('#app')
 );
