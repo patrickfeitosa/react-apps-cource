@@ -23,6 +23,7 @@ export default class Todo extends Component {
         this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleTodoStatus = this.handleTodoStatus.bind(this);
     }
 
     refresh() {
@@ -56,6 +57,13 @@ export default class Todo extends Component {
             });
     }
 
+    handleTodoStatus(todo) {
+        Axios.put(`${URL}/${todo._id}`, { ...todo, done: !todo.done })
+            .then((resp) => {
+                this.refresh();
+            });
+    }
+
     render() {
         return (
             <div>
@@ -63,7 +71,7 @@ export default class Todo extends Component {
                 <TodoForm description={this.state.description}
                     handleChange={this.handleChange}
                     handleAdd={this.handleAdd} />
-                <TodoList list={this.state.list} handleRemove={this.handleRemove} />
+                <TodoList list={this.state.list} handleRemove={this.handleRemove} handleTodoStatus={this.handleTodoStatus} />
             </div>
         );
     };
