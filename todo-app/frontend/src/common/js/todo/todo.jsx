@@ -17,25 +17,28 @@ export default class Todo extends Component {
 
         this._bindEvents();
         this.refresh();
-    }
+    };
 
     _bindEvents() {
         this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.handleTodoStatus = this.handleTodoStatus.bind(this);
-    }
+        this.handleSearch = this.handleSearch.bind(this);
+        this.handleClear = this.handleClear.bind(this);
+    };
 
-    refresh() {
-        Axios.get(`${URL}?sort=-createdAt`)
+    refresh(description = '') {
+        const searchParams = description ? `&description__regex=/${description}/` : '';
+        Axios.get(`${URL}?sort=-createdAt${searchParams}`)
             .then((resp) => {
                 this.setState({
                     ...this.state,
-                    description: '',
+                    description,
                     list: resp.data,
                 })
             });
-    }
+    };
 
     handleAdd() {
         const description = this.state.description;
@@ -44,24 +47,32 @@ export default class Todo extends Component {
         }).then((resp) => {
             this.refresh();
         });
-    }
+    };
 
     handleChange(ev) {
         this.setState({ ...this.state, description: ev.currentTarget.value });
-    }
+    };
 
     handleRemove(todo) {
         Axios.delete(`${URL}/${todo._id}`)
             .then((resp) => {
-                this.refresh();
+                this.refresh(this.state.description);
             });
-    }
+    };
 
     handleTodoStatus(todo) {
         Axios.put(`${URL}/${todo._id}`, { ...todo, done: !todo.done })
             .then((resp) => {
-                this.refresh();
+                this.refresh(this.state.description);
             });
+    };
+
+    handleSearch() {
+        this.refresh(this.state.description);
+    };
+
+    handleClear() {
+        this.refresh();
     }
 
     render() {
@@ -70,7 +81,9 @@ export default class Todo extends Component {
                 <PageHeader name='Tarefas' small='Cadastro'></PageHeader>
                 <TodoForm description={this.state.description}
                     handleChange={this.handleChange}
-                    handleAdd={this.handleAdd} />
+                    handleAdd={this.handleAdd}
+                    handleSearch={this.handleSearch}
+                    handleClear={this.handleClear} />
                 <TodoList list={this.state.list} handleRemove={this.handleRemove} handleTodoStatus={this.handleTodoStatus} />
             </div>
         );
