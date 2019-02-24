@@ -1,5 +1,5 @@
 import React from 'react';
-import If from 'react';
+import If from './if.jsx';
 
 export default (props) => (
     <If test={!props.hide}>
