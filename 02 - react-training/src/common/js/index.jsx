@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 // import Component from './components/singleComponent';
 // import { First, Second } from './components/multipleComponents';
@@ -13,8 +15,12 @@ import ReactDOM from 'react-dom';
 
 import Field from './components/field';
 
+const reducers = combineReducers({
+    field: () => ({ value: 'Opa' }),
+});
+
 ReactDOM.render(
-    <div>
+    <Provider store={createStore(reducers)}>
         {/* <Component value='Show!' />
         <First />
         <Second />
@@ -26,5 +32,5 @@ ReactDOM.render(
         </Family> */}
         {/* <ClassComponent label='Contador' initialValue={10} /> */}
         <Field initialValue='Teste' />
-    </div>, document.querySelector('#app')
+    </Provider>, document.querySelector('#app')
 );
