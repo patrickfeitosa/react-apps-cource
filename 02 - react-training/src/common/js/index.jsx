@@ -13,10 +13,18 @@ import { Provider } from 'react-redux';
 
 // import ClassComponent from './components/classComponent';
 
-import Field from './components/field';
-import fieldReducer from './utils/fieldReducer.js';
+// import Field from './components/field';
+// import fieldReducer from './utils/fieldReducer.js';
+
+// const reducers = combineReducers({
+//     field: fieldReducer,
+// });
+
+import counterReducer from './utils/counterReducers.js';
+import Counter from './components/counter.jsx';
+
 const reducers = combineReducers({
-    field: fieldReducer,
+    counter: counterReducer,
 });
 
 ReactDOM.render(
@@ -31,6 +39,7 @@ ReactDOM.render(
             <Member name='Manuela'/>
         </Family> */}
         {/* <ClassComponent label='Contador' initialValue={10} /> */}
-        <Field initialValue='Teste' />
+        {/* <Field initialValue='Teste' /> */}
+        <Counter />
     </Provider>, document.querySelector('#app')
 );
